@@ -1,0 +1,12 @@
+
+
+es main sb say pahlay hum user sighnup karay ga or us ka bad jasay hi sighnup hn jian ga wo hamray pass data jo daall ahnga wo regigeter hn jian ga or database main save hn jain ga
+
+2 . phpr wo login karay ga jasay hi logoin kara ga wo well come mtlab jo hamray admin file hian us par challa jian ga 
+
+3. ab phpr wo jasay hi admin par challa jian ga to us par ek option hga wo us ko 
+logout kar sakay ga
+
+agar example to wo direct admin par jana  caha ayen ga tu us ko patact kay ua ko well come par dall dia jain ga 
+
+
