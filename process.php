@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ceheckquery = "SELECT * FROM `signup_user_data` WHERE  `user_name` = '$username'";
     $checkresult = mysqli_query($conn, $ceheckquery);
     $row = mysqli_num_rows($checkresult);
+    
     if ($row > 0) {
         $nameExit = true;
         echo "name_exists";
