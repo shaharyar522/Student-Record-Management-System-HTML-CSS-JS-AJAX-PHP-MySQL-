@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($result) {
                 $showalert = true;
                 echo "showalert";
-                exit();
+                exit(); 
             }
         }
         //ar password equal na hun to then uay error shwo karo 
