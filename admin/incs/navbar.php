@@ -12,7 +12,7 @@
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#reservations">Reservations</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="/taskone/logout.php">Logout</a></li>
+                <li><a href="/p1/logout.php">Logout</a></li>
             </ul>
 
             <!-- Menu Toggle for Mobile -->

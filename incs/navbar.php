@@ -9,7 +9,6 @@
             <ul class="nav-links">
                 <li><a href="sign_up.php">Sign Up</a></li>
                 <li><a href="login.php">Login</a></li>
-              
             </ul>
             <!-- Menu Toggle for Mobile -->
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>

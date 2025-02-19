@@ -1,29 +1,34 @@
 <?php
-include('./admin/incs/connection.php');
-session_start(); // Make sure session is started for user login tracking
-
-$showError = false; // For showing error messages
+include('incs/dbconnect.php');
+session_start(); // Start session for user login tracking
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['user_name'];
+    $username = mysqli_real_escape_string($conn, $_POST['user_name']);
     $password = $_POST['user_password'];
 
-    // SQL query to find the user by username and password
-    $sql = "SELECT * FROM admin_login WHERE user_name = '$username' AND user_password = '$password'";
+    // SQL query to get the user data
+    $sql = "SELECT * FROM signup_user_data WHERE user_name = '$username'";
     $result = mysqli_query($conn, $sql);
-    $num = mysqli_num_rows($result);
 
-    // If a user is found, start the session and redirect to admin page
-    if ($num == 1) {
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-        header("location: admin.php"); // Redirect to admin page
-        exit;
+    if ($result && mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row['user_password'])) {
+            // Password is correct, start session
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+            $_SESSION['user_id'] = $row['id']; // Store user ID for security
+
+            header("Location: admin"); // Redirect to admin page
+            exit();
+        } else {
+            echo "invalid_credentials"; // Incorrect password
+        }
     } else {
-        $showError = "Invalid Credentials"; // Show error message if login fails
+        echo "invalid_credentials"; // User not found
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form action="login.php" method="POST">
                     <input class="text w3lpass" type="text" name="user_name" placeholder="Username" required="">
                     <input class="text w3lpass" type="password" name="user_password" placeholder="Password" required="">
-                    
                     <div class="wthree-text">
                         <label class="anim">
                             <input type="checkbox" class="checkbox" required="">
@@ -59,13 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
-
-                <!-- Display error message if login fails -->
-                <?php
-                if ($showError) {
-                    echo '<div style="color: red; text-align: center;">' . $showError . '</div>';
-                }
-                ?>
             </div>
         </div>
     </div>
