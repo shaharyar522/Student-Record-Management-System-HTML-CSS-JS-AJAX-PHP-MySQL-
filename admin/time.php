@@ -21,7 +21,7 @@
             // Update the clock every second
             setInterval(updateClock, 1000);
 
-            // Initial call to display the clock immediately
+            // Initial call to display the clock immediately    
             updateClock();
         });
     </script>
