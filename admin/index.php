@@ -26,7 +26,7 @@
     <?php include("incs/main_form.php") ?>
 
     <script>
-        // this is insertion code 
+        // this is insertion code dfg  
         function add_student() {
             var sno = $('#list_students_tbody').find('.sno:last').html() || 0;
             sno = parseInt(sno) + 1;
